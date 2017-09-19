@@ -1,0 +1,49 @@
+
+.file-container {
+  padding-top: 88px;
+  .am-tabs-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+  }
+  h5{
+    text-align: center;
+    font-weight: normal;
+    padding: 0.3rem 0.3rem 0.18rem 0.3rem;
+    font-size: 0.28rem;
+    color: #888;
+    display: inline-block;
+    line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .am-tabs-tab-active h5{
+    color: #1daa39;
+  }
+  .am-tabs-ink-bar{
+    background-color: #1daa39;
+    transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+}
+
+.little-btn{
+  svg{
+    margin-top: 13px
+  }
+  visibility: hidden;
+  position: fixed;
+  color: white;;
+  z-index: 999;
+  padding: 30px;
+  >div{
+    height: 70px;
+    text-align: center;
+    border-radius: 5px;
+    width: 70px;
+    background-color: rgba(0,0,0,.6);
+  }
+  right: 20px;
+  bottom: 15%;
+}

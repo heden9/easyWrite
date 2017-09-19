@@ -1,0 +1,10 @@
+[
+  {"value": "teachmaterial", "label": "教材"},
+  {"value": "teachteam_data", "label": "教学团队"},
+  {"value": "teacherform_data", "label": "教改项目"},
+  {"value": "teachaword_data", "label": "教师教学奖"},
+  {"value": "teachthesis_data", "label": "教育教学研究论文"},
+  {"value": "great_thesisdata", "label": "指导优秀学位论文"},
+  {"value": "compete_data", "label": "大学生科技创新项目及创新竞赛"}
+
+]

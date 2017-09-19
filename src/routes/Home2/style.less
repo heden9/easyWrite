@@ -1,0 +1,218 @@
+
+@R: 70px;
+@iconR: 55px;
+.home-container{
+  margin: 0 auto;
+  width: 93%;
+  //min-height: 100%;
+  padding-bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+  .accordion-area{
+    width: 90%;
+    position: relative;
+    margin-top: 30px;
+    .my-accordion{
+      border-top: none;
+    }
+    .panel{
+      padding: 16px 54px;
+      color: #888;
+      font-size: 28px;
+      >.title{
+        text-align: right;
+        margin: 10px 0;
+      }
+    }
+    .am-accordion-header{
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      color: #333;
+      font-size: 30px;
+    }
+    .arrow{
+      transition: all .3s;
+    }
+    .task-icon{
+      position: absolute;
+      width: @iconR;
+      height: @iconR;
+      top: 44px;
+      transform: translateY(-50%) translateX(-130%);
+      left: 0;
+      background: white;
+      border-radius: 50%;
+      >svg{
+        width: 100%;
+        height: 100%;
+      }
+      &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 700px;
+        width: 2px;
+        background: #dadad9;
+        transform: translateX(-50%);
+        z-index: -10;
+      }
+    }
+    .am-accordion-content{
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box::after{
+      border-bottom: none;
+    }
+  }
+}
+//.am-tab-bar{
+//  height: 100%;
+//  >.am-tab-bar-content{
+//    height: 100%;
+//    >.am-tab-bar-tabpane{
+//      height: 100%;
+//    }
+//  }
+//}
+.steps-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  .step-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 15px 0;
+    ul{
+      flex: 1;
+    }
+    li{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 10px 0;
+      .ball-item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .ball{
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          background: #d2d2d2;
+          margin-right: 10px;
+        }
+        .history{
+          background: #48b845;
+        }
+        .now{
+          background: #ffb917;
+        }
+        .err{
+          background: #ff5845;
+        }
+
+        span{
+          font-family: Arial;
+          font-size: 24px;
+          flex: 1;
+          text-align: right;
+        }
+      }
+      time{
+        margin-left: 20px;
+        margin-top: 5px;
+      }
+    }
+    .step-icon{
+      width: @R;
+      height: @R;
+      border-radius: 50%;
+      background: white;
+      box-sizing: border-box;
+      border:5px solid #eee;
+      margin: 20px 20px 20px 0;
+      &.active{
+        animation: FadeIn;
+        animation-fill-mode: both;
+        animation-delay: .25s;
+        animation-duration: .3s;
+      }
+    }
+  }
+  .progress{
+    position: absolute;
+    width: 5px;
+    overflow: hidden;
+    top: 0;
+    background: #eee;
+    left: @R/2;
+    transform: translateX(-50%);
+    z-index: -1;
+    height: 100%;
+    >div{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: #6bc456;
+      animation: SlideDown;
+      animation-timing-function: ease-out;
+      animation-fill-mode: both;
+      animation-duration: .5s;
+    }
+  }
+}
+.grade-container {
+  margin-top: 100px;
+  width: 100%;
+  height: 550px;
+  position: relative;
+  background: #f5f5f9;
+  //background: #6597f1;
+  .grade-img{
+    position: absolute;
+    top: 0;
+    right: 90%;
+    width: @iconR;
+    height: @iconR;
+    transform: translateX(-30%);
+    background: url('../../assets/img/grade.png') no-repeat center center/cover;
+  }
+  .chart{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    .list{
+      position: relative;
+    }
+    img{
+      max-width: 100%;
+    }
+  }
+}
+@keyframes SlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+@keyframes FadeIn {
+  0% {
+    border-color: #eee;
+  }
+  100%{
+    border-color: rgb(107, 196, 86);
+  }
+}

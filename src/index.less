@@ -1,0 +1,60 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+ul,li,ol{
+  list-style: none;
+}
+time{
+  font-family: Arial;
+  font-size: 20px;
+}
+html, body, :global(#root) {
+  height: 100%;
+  .am-list-content{
+    color: #333;
+    font-size: 30px;
+  }
+  font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  //p{
+  //  font-size: 30px;
+  //}
+  .am-list-body{
+    overflow: hidden;
+  }
+}
+.ice{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow: hidden;
+  .mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(0,0,0,.2);
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#34000000,endColorStr=#34000000);
+    color: #fff;
+    font-size: 50px;
+  }
+  img.blur {
+    position: absolute;
+    width: 100%; bottom: 0; left: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* css3 */
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    filter: blur(5px); /* FireFox 35+ support */
+    /* IE6~IE9 */
+    left: -5px;
+    max-width: 100%;
+  }
+}

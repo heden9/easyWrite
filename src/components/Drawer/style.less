@@ -1,0 +1,107 @@
+.drawer-container{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  .main-body{
+    width: 100%;
+    top: 0;
+    height: 200px;
+    background: gold;
+    position: fixed;
+    transition: all .2s ease-out;
+    z-index: 999;
+  }
+  .mask{
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: all .2s ease-in;
+    z-index: 998;
+    position: fixed;
+  }
+  &.show{
+    visibility: visible;
+    .main-body{
+      transform: translate3d(0, 0, 0);
+      //visibility: visible;
+    }
+    .mask{
+      opacity: 1;
+      //visibility: visible;
+      //z-index: 998;
+    }
+  }
+  &.hide{
+    visibility: hidden;
+    .main-body{
+      transform: translate3d( 0, -100%, 0);
+      //visibility: hidden;
+    }
+    .mask{
+      opacity: 0;
+      //visibility: hidden;
+      //z-index: -1;
+    }
+  }
+}
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.slideOutLeft {
+  animation-name: slideOutLeft;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+}
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+.animated {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}

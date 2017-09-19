@@ -1,0 +1,28 @@
+.rocket{
+  width: 70px;
+  height: 70px;
+  background: url('../assets/img/rocketn.svg') no-repeat center center/cover;
+  animation-duration: .2s;
+  animation-fill-mode: both;
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.7, .7, .7);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+.animated {
+}
+.am-tab-bar-tab-active{
+  .am-tab-bar-tab-icon + .am-tab-bar-tab-title>span{
+    display: none;
+  }
+}

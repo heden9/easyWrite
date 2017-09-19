@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="antm-viewport.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    #prompt{
+      display: none;
+    }
+    @media (orientation: landscape) {
+      #root{
+        display: none;
+      }
+      #prompt{
+        display: block;
+      }
+    }
+  </style>
+  <title>易填表</title>
+</head>
+<body>
+<div id="root"></div>
+<article id="prompt">
+  请竖屏查看哦！
+</article>
+<script src="index.js"></script>
+</body>
+</html>

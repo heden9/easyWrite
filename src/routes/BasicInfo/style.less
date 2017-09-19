@@ -1,0 +1,17 @@
+#basic{
+  .am-list-body{
+    position: relative;
+    &::after{
+      position: absolute;
+      content: '';
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #ddd;
+      left: 190px;
+    }
+    .am-input-label,.am-input-control>input{
+      font-size: 30px;
+    }
+  }
+}
