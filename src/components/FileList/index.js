@@ -2,6 +2,7 @@ import React from 'react';
 /* eslint no-dupe-keys: 0 */
 import { ListView, List } from 'antd-mobile';
 import './style.less';
+
 const Item = List.Item;
 
 export default class FileList extends React.PureComponent {
@@ -26,30 +27,29 @@ export default class FileList extends React.PureComponent {
         this.sectionIDs.push(item);
         this.dataBlob[item] = item;
         this.rowIDs[index] = [];
-        data[item].forEach((jitem,jindex)=>{
-          this.rowIDs[index].push(jitem.id + '-' + jindex);
-          this.dataBlob[jitem.id + '-' + jindex] = jitem;
-        })
+        data[item].forEach((jitem, jindex) => {
+          this.rowIDs[index].push(`${jitem.id}-${jindex}`);
+          this.dataBlob[`${jitem.id}-${jindex}`] = jitem;
+        });
       });
     };
     this.genData(data);
     this.state = {
       dataSource: dataSource.cloneWithRowsAndSections(this.dataBlob, this.sectionIDs, this.rowIDs),
       isLoading: false,
-      hasMore: false
+      hasMore: false,
     };
   }
   static defaultProps = {
     data: [],
     rowClass: '',
     rowArrow: 'horizontal',
-    jump: ''
+    jump: '',
   };
   componentDidMount() {
     this.refs.lv.scrollTo(0, 0);
     // you can scroll to the specified position
     // setTimeout(() => this.refs.lv.refs.listview.scrollTo(0, 200), 800); // also work
-
   }
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
@@ -82,10 +82,10 @@ export default class FileList extends React.PureComponent {
     const setting = rowData.finish_time != 0 ? 'finish_time' : 'task_time';
     const time = rowData[setting].split('-')[2].split(' ')[0];
     return (
-      <Item arrow={this.props.rowArrow} onClick={this.props.jump && this.props.jump.bind(null,rowData.id)} key={rowID}>
+      <Item arrow={this.props.rowArrow} onClick={this.props.jump && this.props.jump.bind(null, rowData.id)} key={rowID}>
         <div className="file-item">
           <div className={`date ${this.props.rowClass}`}>
-            <i/>
+            <i />
             {time}
           </div>
           <p>{rowData.name}</p>
@@ -105,14 +105,14 @@ export default class FileList extends React.PureComponent {
           <div className="section-item">{`${sectionData.split('-')[0]}年${sectionData.split('-')[1]}月`}</div>
         )}
         renderRow={this.row}
-        renderSectionBodyWrapper={(sectionID)=>(
-          <div key={sectionID} style={{backgroundColor: '#f5f5f9',padding: '0 0 10px 0'}}></div>
+        renderSectionBodyWrapper={sectionID => (
+          <div key={sectionID} style={{ backgroundColor: '#f5f5f9', padding: '0 0 10px 0' }} />
         )}
         className="fileList-container"
         pageSize={4}
         scrollEventThrottle={200}
         // onEndReached={this.onEndReached}
-        useBodyScroll={true}
+        useBodyScroll
       />
     );
   }

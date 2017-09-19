@@ -2,38 +2,43 @@ import React from 'react';
 import './style.less';
 import { Tabs, List } from 'antd-mobile';
 import CharList from '../../components/chartList';
+
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
 export default class StateBar extends React.PureComponent {
   render() {
-    const {unwrite, unconfirm, jump, saveKey, keyIndex} = this.props;
+    const { unwrite, unconfirm, jump, saveKey, keyIndex } = this.props;
     return (
       <Tabs
-        onTabClick={key=>saveKey(key)}
-        className='stateBar-container'
+        onTabClick={key => saveKey(key)}
+        className="stateBar-container"
         defaultActiveKey={keyIndex[0]}
         animated={false}
-        swipeable={false}>
+        swipeable={false}
+      >
         <TabPane
           tab={
-            <div className='unfill swipe'>
+            <div className="unfill swipe">
               <div>
-                <i>{unwrite['len']}</i>&nbsp;<b>份</b><br/>
+                <i>{unwrite.len}</i>&nbsp;<b>份</b><br />
                 待填写
               </div>
             </div>
-          } key="1">
-          {_renderBox(unwrite['arr'], jump)}
+          } key="1"
+        >
+          {_renderBox(unwrite.arr, jump)}
         </TabPane>
-        <TabPane tab={
-          <div className='unchecked swipe'>
-            <div>
-              <i>{unconfirm['len']}</i>&nbsp;<b>份</b><br/>
+        <TabPane
+          tab={
+            <div className="unchecked swipe">
+              <div>
+                <i>{unconfirm.len}</i>&nbsp;<b>份</b><br />
               待修改
             </div>
-          </div>
-        } key="2">
-          {_renderBox(unconfirm['arr'], jump)}
+            </div>
+        } key="2"
+        >
+          {_renderBox(unconfirm.arr, jump)}
         </TabPane>
       </Tabs>
     );
@@ -42,7 +47,8 @@ export default class StateBar extends React.PureComponent {
 const _renderBox = (array, jump) => (
   <CharList
     jump={jump}
-    data={array}/>
+    data={array}
+  />
 );
 
 //

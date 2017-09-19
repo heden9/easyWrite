@@ -4,29 +4,29 @@ const mLocalSDK = {
     {
       id: '123123',
       url: 'http://www.baidu.com/123123.js',
-      type: 'javascript'
+      type: 'javascript',
     },
     {
       id: '123123',
       url: 'http://www.baidu.com/123123.js',
-      type: 'javascript'
+      type: 'javascript',
     },
     {
       id: '123123',
       url: 'http://www.baidu.com/123123.js',
-      type: 'javascript'
+      type: 'javascript',
     },
     {
       id: '123123',
       url: 'http://www.baidu.com/123123.js',
-      type: 'javascript'
-    }
-  ]
+      type: 'javascript',
+    },
+  ],
 };
 
 mLocalSDK.prototype.needUpdate = (function () {
 
-})();
+}());
 export default {
-  mLocalSDK
+  mLocalSDK,
 };

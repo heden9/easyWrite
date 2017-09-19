@@ -1,4 +1,5 @@
-import {fetchUserInfo} from '../services/fetchUserInfo';
+import { fetchUserInfo } from '../services/fetchUserInfo';
+
 export default {
   namespace: 'user',
   state: {
@@ -9,24 +10,24 @@ export default {
     num: undefined,
   },
   reducers: {
-    save(state, actions){
+    save(state, actions) {
       return { ...state, ...actions.payload };
     },
   },
   effects: {
-    *login( {payload: values} , {call, put }) {
-      const { data: {headimgurl, unconfirm, unwrite, num} } = yield call(fetchUserInfo);
+    *login({ payload: values }, { call, put }) {
+      const { data: { headimgurl, unconfirm, unwrite, num } } = yield call(fetchUserInfo);
       const message = unconfirm.len != 0 || unwrite.len != 0;
-      yield put({type: 'save', payload: { headimgurl, unconfirm, unwrite, num, message}});
-    }
+      yield put({ type: 'save', payload: { headimgurl, unconfirm, unwrite, num, message } });
+    },
   },
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
       return history.listen(({ pathname }) => {
-        if(pathname === '/'){
-          dispatch({type: 'login'});
+        if (pathname === '/') {
+          dispatch({ type: 'login' });
         }
-      })
-    }
+      });
+    },
   },
 };

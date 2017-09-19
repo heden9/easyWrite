@@ -1,4 +1,4 @@
-const throttle = function(func, wait, options) {
+const throttle = function (func, wait, options) {
   /* options的默认值
    *  表示首次调用返回值方法时，会马上调用func；否则仅会记录当前时刻，当第二次调用的时间间隔超过wait时，才调用func。
    *  options.leading = true;
@@ -6,21 +6,23 @@ const throttle = function(func, wait, options) {
    *  options.trailing = true;
    * 注意：当options.trailing = false时，效果与上面的简单实现效果相同
    */
-  var context, args, result;
-  var timeout = null;
-  var previous = 0;
+  let context,
+    args,
+    result;
+  let timeout = null;
+  let previous = 0;
   if (!options) options = {};
-  var later = function() {
+  const later = function () {
     previous = options.leading === false ? 0 : new Date().getTime();
     timeout = null;
     result = func.apply(context, args);
     if (!timeout) context = args = null;
   };
-  return function() {
-    var now = new Date().getTime();
+  return function () {
+    const now = new Date().getTime();
     if (!previous && options.leading === false) previous = now;
     // 计算剩余时间
-    var remaining = wait - (now - previous);
+    const remaining = wait - (now - previous);
     context = this;
     args = arguments;
     // 当到达wait指定的时间间隔，则调用func函数
@@ -43,5 +45,5 @@ const throttle = function(func, wait, options) {
 };
 
 export default {
-  throttle
+  throttle,
 };

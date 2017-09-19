@@ -6,15 +6,16 @@ import { WhiteSpace } from 'antd-mobile';
 import './style.less';
 import Portrait from '../../routes/Portrait';
 import PersonInfoList from '../../components/PersonInfoList';
+
 function Person({ dispatch }:{ dispatch: Function }) {
-  function jump(page: string,id: string) {
-    dispatch(routerRedux.push(`${page}${id}`))
+  function jump(page: string, id: string) {
+    dispatch(routerRedux.push(`${page}${id}`));
   }
   return (
-    <div className='person-container'>
-      <Portrait/>
-      <WhiteSpace size={'lg'}/>
-      <PersonInfoList jump={jump}/>
+    <div className="person-container">
+      <Portrait />
+      <WhiteSpace size={'lg'} />
+      <PersonInfoList jump={jump} />
     </div>
   );
 }

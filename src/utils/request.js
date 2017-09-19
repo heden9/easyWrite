@@ -28,7 +28,7 @@ export default async function request(url, options) {
   checkStatus(response);
 
   const data = await response.json();
-  if(!data){
+  if (!data) {
     Toast.fail('数据传输错误！');
   }
   const ret = {

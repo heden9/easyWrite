@@ -2,15 +2,17 @@ import React from 'react';
 import { List, InputItem, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { connect } from 'dva';
-import  './style.less';
+import './style.less';
+
 const Item = List.Item;
 const Brief = Item.Brief;
 function BasicInfo(props) {
   return (
     <div id="basic">
       <List
-        renderFooter={<div/>}
-        renderHeader={<span>基础信息</span>}>
+        renderFooter={<div />}
+        renderHeader={<span>基础信息</span>}
+      >
         <InputItem
           defaultValue={props.name}
           editable={false}
@@ -73,12 +75,12 @@ function BasicInfo(props) {
         >座机号</InputItem>
       </List>
     </div>
-  )
+  );
 }
 function mapStateToProps({ basic }) {
   return {
-    ...basic
-  }
+    ...basic,
+  };
 }
 
 

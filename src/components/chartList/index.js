@@ -2,11 +2,12 @@ import React from 'react';
 /* eslint no-dupe-keys: 0 */
 import { ListView, List } from 'antd-mobile';
 import './style.less';
+
 const Item = List.Item;
 function format(time) {
   const dateReg = /^([0-9]{4})[-/\.年]([0-1]?[0-9]{1})[-/\.月]([0-3]?[0-9]{1})[日]?.?([0-2]?[0-9](:[0-6][0-9]){2})?/;
   const arr = dateReg.exec(time);
-  return parseInt(arr[2]) + '月' + parseInt(arr[3]) + '日';
+  return `${parseInt(arr[2])}月${parseInt(arr[3])}日`;
 }
 export default class CharList extends React.PureComponent {
   constructor(props) {
@@ -20,26 +21,28 @@ export default class CharList extends React.PureComponent {
     this.dataBlob = {};
     this.rowIDs = [];
     this.genData = () => {
-      data.map((item, index)=>{
-        this.dataBlob[item.id + '-' + index] = item;
-      })
+      data.map((item, index) => {
+        this.dataBlob[`${item.id}-${index}`] = item;
+      });
     };
     this.genData();
     this.state = {
       dataSource: dataSource.cloneWithRows(this.dataBlob),
-      hasMore: false
+      hasMore: false,
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     // window.addEventListener('touchend',(e)=>{
     //   e.preventDefault()
     // },false)
   }
   row = (rowData, sectionID, rowID) => {
     return (
-      <Item arrow="horizontal"
-            onClick={()=>{this.props.jump(rowData.id)}}
-            key={rowID}>
+      <Item
+        arrow="horizontal"
+        onClick={() => { this.props.jump(rowData.id); }}
+        key={rowID}
+      >
         <p>{rowData.name}<small>截止时间:{format(rowData.task_time)} </small></p>
       </Item>
     );
@@ -53,7 +56,7 @@ export default class CharList extends React.PureComponent {
         className="charList-container"
         pageSize={4}
         scrollEventThrottle={200}
-        useBodyScroll={true}
+        useBodyScroll
       />
     );
   }
