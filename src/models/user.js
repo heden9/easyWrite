@@ -3,6 +3,7 @@ import { fetchUserInfo } from '../services/fetchUserInfo';
 export default {
   namespace: 'user',
   state: {
+    host: '',
     headimgurl: undefined,
     unconfirm: {},
     unwrite: {},
@@ -16,9 +17,9 @@ export default {
   },
   effects: {
     *login({ payload: values }, { call, put }) {
-      const { data: { headimgurl, unconfirm, unwrite, num } } = yield call(fetchUserInfo);
+      const { data: { headimgurl, unconfirm, unwrite, num, host } } = yield call(fetchUserInfo);
       const message = unconfirm.len != 0 || unwrite.len != 0;
-      yield put({ type: 'save', payload: { headimgurl, unconfirm, unwrite, num, message } });
+      yield put({ type: 'save', payload: { headimgurl, unconfirm, unwrite, num, message, host } });
     },
   },
   subscriptions: {

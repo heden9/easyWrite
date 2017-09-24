@@ -5,9 +5,7 @@ export default {
   // GET POST 可省略
   'GET /index.php/Home/BasicInfo/get_info': require('./mock/basicInfo.json'),
   'GET /index.php/Home/Confirm/allfile': require('./mock/fileInfo.json'),
-
   // 支持自定义函数，API 参考 express@4
-  'POST /api/users/create': (req, res) => { res.end('OK'); },
 
   // Forward 到另一个服务器
   // 'GET /assets/*': 'https://assets.online/',

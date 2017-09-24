@@ -75,7 +75,7 @@ function AccordionItem(props) {
       <div className="task-icon">
         <Icon type={iconArr.task[0]} size={'25'} />
       </div>
-      <Accordion className="my-accordion" defaultActiveKey={props.activeKey ? '0' : ''}>
+      <Accordion openAnimation={{}} className="my-accordion" defaultActiveKey={props.activeKey ? '0' : ''}>
         <Accordion.Panel header={props.file_name}>
           <div className="panel">
             <Steps {...props} />

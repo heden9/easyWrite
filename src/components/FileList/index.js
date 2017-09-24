@@ -1,6 +1,7 @@
 import React from 'react';
 /* eslint no-dupe-keys: 0 */
 import { ListView, List } from 'antd-mobile';
+import EmptyIcon from '../EmptyIcon';
 import './style.less';
 
 const Item = List.Item;
@@ -47,7 +48,7 @@ export default class FileList extends React.PureComponent {
     jump: '',
   };
   componentDidMount() {
-    this.refs.lv.scrollTo(0, 0);
+    this.refs.lv && this.refs.lv.scrollTo(0, 0);
     // you can scroll to the specified position
     // setTimeout(() => this.refs.lv.refs.listview.scrollTo(0, 200), 800); // also work
   }
@@ -94,27 +95,34 @@ export default class FileList extends React.PureComponent {
     );
   };
   render() {
-    return (
-      <ListView
-        ref="lv"
-        dataSource={this.state.dataSource}
-        renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-          {this.state.isLoading ? 'Loading...' : 'Loaded'}
-        </div>)}
-        renderSectionHeader={sectionData => (
-          <div className="section-item">{`${sectionData.split('-')[0]}年${sectionData.split('-')[1]}月`}</div>
-        )}
-        renderRow={this.row}
-        renderSectionBodyWrapper={sectionID => (
-          <div key={sectionID} style={{ backgroundColor: '#f5f5f9', padding: '0 0 10px 0' }} />
-        )}
-        className="fileList-container"
-        pageSize={4}
-        scrollEventThrottle={200}
-        // onEndReached={this.onEndReached}
-        useBodyScroll
-      />
-    );
+    if (this.state.dataSource.length === 0) {
+      return (
+        <EmptyIcon />
+      );
+    } else {
+      return (
+        <ListView
+          ref="lv"
+          dataSource={this.state.dataSource}
+          renderFooter={() => (<div className="footer">
+            {this.state.isLoading ? '加载中...' : <div>我也是有底线的</div>}
+            <div className="line" />
+          </div>)}
+          renderSectionHeader={sectionData => (
+            <div className="section-item">{`${sectionData.split('-')[0]}年${sectionData.split('-')[1]}月`}</div>
+          )}
+          renderRow={this.row}
+          renderSectionBodyWrapper={sectionID => (
+            <div key={sectionID} style={{ backgroundColor: '#f5f5f9' }} />
+          )}
+          className="fileList-container"
+          pageSize={4}
+          scrollEventThrottle={200}
+          // onEndReached={this.onEndReached}
+          useBodyScroll
+        />
+      );
+    }
   }
 }
 

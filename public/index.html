@@ -13,7 +13,16 @@
         display: none;
       }
       #prompt{
-        display: block;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #prompt>p{
+        font-weight: bold;
+        font-size: 25px;
+        color: #4a4a4a;
       }
     }
   </style>
@@ -22,7 +31,8 @@
 <body>
 <div id="root"></div>
 <article id="prompt">
-  请竖屏查看哦！
+  <img src="./robot.svg" alt="">
+  <p>请竖屏查看哦!</p>
 </article>
 <script src="index.js"></script>
 </body>

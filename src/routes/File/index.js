@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import styles from './style.less';
-import _ from 'lodash';
 import { ActivityIndicator, Tabs, Icon } from 'antd-mobile';
 import FileList from '../../components/FileList';
 
@@ -19,21 +18,19 @@ class File extends React.PureComponent {
     this.props.dispatch({ type: 'route/saveKey', payload: { fileCurrentKey: [key, window.scrollY] } });
   };
   jump = (id) => {
-    this.props.dispatch(routerRedux.push(`/write/${id}`));
+    location.href = `${this.props.host}/write/${id}`;
   };
   _renderFileList = (data, rowClass) => {
-    if (data.length !== 0) {
-      return (
-        <FileList
-          loadFileInfo={this.loadFileInfo}
-          data={data}
-          rowArrow={rowClass === 'unchecked' ? '' : undefined}
-          rowClass={rowClass}
-          scrollTop={this.props.fileCurrentKey[1]}
-          jump={rowClass === 'unchecked' ? undefined : this.jump}
-        />
-      );
-    }
+    return (
+      <FileList
+        loadFileInfo={this.loadFileInfo}
+        data={data}
+        rowArrow={rowClass === 'unchecked' ? '' : undefined}
+        rowClass={rowClass}
+        scrollTop={this.props.fileCurrentKey[1]}
+        jump={rowClass === 'unchecked' ? undefined : this.jump}
+      />
+    );
   };
   componentWillUnmount() {
     window.onscroll = null;
@@ -92,9 +89,10 @@ class File extends React.PureComponent {
   }
 
 }
-function mapStateToProps({ file, loading: { models }, route: { hidden, rocket, fileCurrentKey } }) {
+function mapStateToProps({ file, userTask: { host }, loading: { models }, route: { hidden, rocket, fileCurrentKey } }) {
   return {
     file,
+    host,
     hidden,
     rocket,
     fileCurrentKey,
