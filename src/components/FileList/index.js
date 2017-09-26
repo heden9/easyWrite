@@ -95,7 +95,7 @@ export default class FileList extends React.PureComponent {
     );
   };
   render() {
-    if (this.state.dataSource.length === 0) {
+    if (Object.keys(this.props.data).length === 0) {
       return (
         <EmptyIcon />
       );

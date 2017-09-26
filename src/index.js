@@ -2,6 +2,7 @@ import dva from 'dva';
 import './index.less';
 import localStore from './utils/localStore';
 import createLoading from 'dva-loading';
+import { Toast } from 'antd-mobile';
 // 1. Initialize
 // const app = dva({
 //   history: browserHistory,
@@ -14,6 +15,9 @@ if (localStore.getItem('store')) {
 // 1. Initialize
 const app = dva({
   initialState,
+  onError: () => {
+    Toast.fail('出错啦TnT');
+  }
 });
 
 window.beforeunload = window.onunload = function () {

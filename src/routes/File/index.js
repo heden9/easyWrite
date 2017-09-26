@@ -32,12 +32,6 @@ class File extends React.PureComponent {
       />
     );
   };
-  componentWillUnmount() {
-    window.onscroll = null;
-  }
-  componentDidMount() {
-
-  }
   render() {
     const { loading, fileCurrentKey, file: { finished, unwrite, unconfirm, unchecked } } = this.props;
     return (

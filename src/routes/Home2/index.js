@@ -105,9 +105,13 @@ function Steps({ unchecked, unwrite, unconfirm, finished, now_step, task_time })
 }
 function StepItem({ times, timestamp, name, now, task_time }) {
   const flag = times !== '0';
+  let active = now === name;
+  if(now === 'unchecked' && name === 'unconfirm'){
+    active = true;
+  }
   return (
     <div className="step-item">
-      <Icon type={iconArr[name][flag ? 0 : 1]} size="100" className={`step-icon ${now === name ? 'active' : ''}`} />
+      <Icon type={iconArr[name][flag ? 0 : 1]} size="100" className={`step-icon ${active ? 'active' : ''}`} />
       {
         flag ?
           <ul>
