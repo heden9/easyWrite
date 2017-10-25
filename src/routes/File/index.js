@@ -1,8 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import styles from './style.less';
-import { ActivityIndicator, Tabs, Icon } from 'antd-mobile';
+import { ActivityIndicator, Tabs } from 'antd-mobile';
+import './style.less';
 import FileList from '../../components/FileList';
 
 const TabPane = Tabs.TabPane;
@@ -20,7 +19,7 @@ class File extends React.PureComponent {
   jump = (id) => {
     location.href = `${this.props.host}/write/${id}`;
   };
-  _renderFileList = (data, rowClass) => {
+  renderFileList = (data, rowClass) => {
     return (
       <FileList
         loadFileInfo={this.loadFileInfo}
@@ -33,7 +32,8 @@ class File extends React.PureComponent {
     );
   };
   render() {
-    const { loading, fileCurrentKey, file: { finished, unwrite, unconfirm, unchecked } } = this.props;
+    const { loading, fileCurrentKey, file } = this.props;
+    const { finished, unwrite, unconfirm, unchecked } = file;
     return (
       <div>
         {
@@ -53,28 +53,28 @@ class File extends React.PureComponent {
               <h5 >已完成</h5>
           } key="1"
           >
-            {this._renderFileList(finished, 'finished')}
+            {this.renderFileList(finished, 'finished')}
           </TabPane>
           <TabPane
             tab={
               <h5>待填写</h5>
           } key="2"
           >
-            {this._renderFileList(unwrite, 'unwrite')}
+            {this.renderFileList(unwrite, 'unwrite')}
           </TabPane>
           <TabPane
             tab={
               <h5>待修改</h5>
           } key="3"
           >
-            {this._renderFileList(unconfirm, 'unconfirm')}
+            {this.renderFileList(unconfirm, 'unconfirm')}
           </TabPane>
           <TabPane
             tab={
               <h5>待审批</h5>
           } key="4"
           >
-            {this._renderFileList(unchecked, 'unchecked')}
+            {this.renderFileList(unchecked, 'unchecked')}
           </TabPane>
         </Tabs>
       </div>
@@ -83,7 +83,8 @@ class File extends React.PureComponent {
   }
 
 }
-function mapStateToProps({ file, userTask: { host }, loading: { models }, route: { hidden, rocket, fileCurrentKey } }) {
+function mapStateToProps({ file, userTask: { host }, loading: { models }, route }) {
+  const { hidden, rocket, fileCurrentKey } = route;
   return {
     file,
     host,

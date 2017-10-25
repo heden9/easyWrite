@@ -1,13 +1,13 @@
 import React from 'react';
+import { connect } from 'dva';
 import './style.less';
 import img from '../../assets/img/Drum.png';
-import { connect } from 'dva';
 
-function Portrait({ headimgurl, num }) {
+function Portrait({ headimgurl = img, num }) {
   return (
     <div className="portrait-container">
       <div className="portrait">
-        <img src={img} alt="" />
+        <img src={headimgurl} alt="" />
       </div>
       {
         num && <div className="title">id:{num}</div>

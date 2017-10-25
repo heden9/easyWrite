@@ -8,7 +8,12 @@ const svgSpriteDirs = [
 ];
 
 export default {
-  entry : "src/index.js" ,
+  entry : {
+    app: "./src/index.js",
+    vendor: "./src/vendor.js"
+  } ,
+  hash: true,
+  multipage: true,
   disableCSSModules : true ,
   publicPath : "/" ,
   svgSpriteLoaderDirs : svgSpriteDirs ,

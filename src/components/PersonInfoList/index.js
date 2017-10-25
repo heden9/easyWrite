@@ -1,8 +1,7 @@
-// @flow
 import React from 'react';
+import { List, Picker, WhiteSpace } from 'antd-mobile';
+import Icon from '../../components/CustomIcon';
 import './style.less';
-import { List, Picker, Icon, WhiteSpace } from 'antd-mobile';
-
 import scientificInfo from '../../config/teachInfo.json';
 
 const district = [
@@ -16,7 +15,7 @@ const iconArr = {
 
 };
 
-function PersonInfoList({ jump }:{ jump: Function }) {
+function PersonInfoList({ jump }) {
   return (
     <div>
       <List style={{ backgroundColor: 'white' }}>

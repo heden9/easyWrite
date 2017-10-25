@@ -1,10 +1,9 @@
 import React from 'react';
+import { Tabs } from 'antd-mobile';
 import './style.less';
-import { Tabs, List } from 'antd-mobile';
 import CharList from '../../components/chartList';
 
 const TabPane = Tabs.TabPane;
-const Item = List.Item;
 export default class StateBar extends React.PureComponent {
   render() {
     const { unwrite, unconfirm, jump, saveKey, keyIndex } = this.props;
@@ -26,7 +25,7 @@ export default class StateBar extends React.PureComponent {
             </div>
           } key="1"
         >
-          {_renderBox(unwrite.arr, jump)}
+          {renderBox(unwrite.arr, jump)}
         </TabPane>
         <TabPane
           tab={
@@ -38,13 +37,13 @@ export default class StateBar extends React.PureComponent {
             </div>
         } key="2"
         >
-          {_renderBox(unconfirm.arr, jump)}
+          {renderBox(unconfirm.arr, jump)}
         </TabPane>
       </Tabs>
     );
   }
 }
-const _renderBox = (array, jump) => (
+const renderBox = (array, jump) => (
   <CharList
     jump={jump}
     data={array}

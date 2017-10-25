@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
-import { TabBar, Icon } from 'antd-mobile';
+import { TabBar } from 'antd-mobile';
+import Icon from '../components/CustomIcon';
 import { scrollTo } from '../utils/utils';
 import './style.less';
 
@@ -10,9 +11,9 @@ const iconArr = {
   message: [require('../assets/icon/message.svg'), require('../assets/icon/message-o.svg')],
   file: [require('../assets/icon/file.svg'), require('../assets/icon/file-o.svg')],
 };
-const App = ({ children, rocket, hidden, selectedTab, dispatch, message }) => {
-  const pressHandle = (selectedTab) => {
-    dispatch(routerRedux.push(selectedTab));
+const App = ({ children, hidden, selectedTab, dispatch, message }) => {
+  const pressHandle = (selected) => {
+    dispatch(routerRedux.push(selected));
   };
   return (
     <TabBar
@@ -24,7 +25,7 @@ const App = ({ children, rocket, hidden, selectedTab, dispatch, message }) => {
     >
       <TabBar.Item
         icon={<Icon type={iconArr.message[1]} />}
-        selectedIcon={<Icon type={iconArr.message[0]} />}
+        selectedIcon={<Icon type={iconArr.message[1]} />}
         title="消息"
         key="/home"
         dot={message}
@@ -60,11 +61,10 @@ const App = ({ children, rocket, hidden, selectedTab, dispatch, message }) => {
   );
 };
 
-function mapStateToProps({ route: { selectedTab, hidden, rocket }, userTask: { message } }) {
+function mapStateToProps({ route: { selectedTab, hidden }, userTask: { message } }) {
   return {
     selectedTab,
     message,
-    rocket,
     hidden,
   };
 }

@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
+import { ActivityIndicator } from 'antd-mobile';
 import './style.less';
-import { WhiteSpace, ActivityIndicator } from 'antd-mobile';
 import Portrait from '../../routes/Portrait';
 import StateBar from '../../components/StateBar';
 
 class Home extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor(...arg) {
+    super(...arg);
     this.keyIndex = '1';
   }
   static propTypes = {
@@ -27,7 +27,7 @@ class Home extends React.PureComponent {
     this.props.dispatch({ type: 'route/saveKey', payload: { homeCurrentKey: this.keyIndex } });
     this.props.dispatch(routerRedux.push(`/write/${id}`));
   };
-  _renderStateBar = () => {
+  renderStateBar = () => {
     const { unwrite, unconfirm, homeCurrentKey } = this.props;
     if (!unconfirm.len || !unwrite.len) {
       return <div>暂无通知哦</div>;
@@ -52,18 +52,18 @@ class Home extends React.PureComponent {
           loading && <ActivityIndicator toast text="正在加载" />
         }
         {
-          this._renderStateBar()
+          this.renderStateBar()
         }
       </div>
     );
   }
 }
-function mapStateToProps({ user: { unconfirm, unwrite }, route: { homeCurrentKey }, loading: { models: { user } } }) {
+function mapStateToProps({ user: { unconfirm, unwrite }, route: { homeCurrentKey }, loading }) {
   return {
     unconfirm,
     unwrite,
     homeCurrentKey,
-    loading: user,
+    loading: loading.models.user,
   };
 }
 

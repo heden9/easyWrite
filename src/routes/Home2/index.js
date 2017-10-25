@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Accordion, List, Icon, WhiteSpace } from 'antd-mobile';
+import { Accordion } from 'antd-mobile';
 import { connect } from 'dva';
+import Icon from '../../components/CustomIcon';
 import './style.less';
 
 const iconArr = {
@@ -19,18 +20,18 @@ const Progress = {
   finished: ['100%'],
 };
 class Home2 extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor(...arg) {
+    super(...arg);
   }
   componentDidMount() {
    // this.targetEle.scrollIntoView();
   }
   render() {
-    const { task_arr }: { task_arr: Array<Object> } = this.props;
+    const { task_arr } = this.props;
     return (
       <div className="home-container">
         {
-          task_arr.map((item, index, arr) => {
+          task_arr.map((item, index) => {
             // const activeKey = index === arr.length-1;
             const activeKey = index === 0;
             return (
@@ -106,7 +107,7 @@ function Steps({ unchecked, unwrite, unconfirm, finished, now_step, task_time })
 function StepItem({ times, timestamp, name, now, task_time }) {
   const flag = times !== '0';
   let active = now === name;
-  if(now === 'unchecked' && name === 'unconfirm'){
+  if (now === 'unchecked' && name === 'unconfirm') {
     active = true;
   }
   return (
@@ -117,16 +118,16 @@ function StepItem({ times, timestamp, name, now, task_time }) {
           <ul>
             {
               timestamp.map((item, index) => {
-                const flag = item === '0';
-                let text = flag ? 'now' : 'history';
-                if (times !== '0' && !flag) { text = 'err'; }
+                const flag2 = item === '0';
+                let text = flag2 ? 'now' : 'history';
+                if (times !== '0' && !flag2) { text = 'err'; }
                 return (
                   <li key={item}>
                     <div className="ball-item">
                       <div className={`ball ${text}`} />
                       <span>{`第${index + 1}次 ${Progress[name][1]}`}</span>
                     </div>
-                    <time>{flag ? '进行中...' : item}</time>
+                    <time>{flag2 ? '进行中...' : item}</time>
                   </li>
                 );
               })
@@ -143,7 +144,7 @@ function StepItem({ times, timestamp, name, now, task_time }) {
     </div>
   );
 }
-function mapStateToProps({ userTask }:{ userTask: Object }) {
+function mapStateToProps({ userTask }) {
   return {
     ...userTask,
   };

@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
@@ -7,8 +6,8 @@ import './style.less';
 import Portrait from '../../routes/Portrait';
 import PersonInfoList from '../../components/PersonInfoList';
 
-function Person({ dispatch }:{ dispatch: Function }) {
-  function jump(page: string, id: string) {
+function Person({ dispatch }) {
+  function jump(page, id) {
     dispatch(routerRedux.push(`${page}${id}`));
   }
   return (
@@ -20,7 +19,7 @@ function Person({ dispatch }:{ dispatch: Function }) {
   );
 }
 
-function mapStateToProps({}) {
+function mapStateToProps() {
   return {
   };
 }

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-scale="true">
+<head>
+  <meta charset="UTF-8">
+  <script src="antm-viewport.min.js"></script>
+  <style>
+    #prompt{
+      display: none;
+    }
+    @media (orientation: landscape) {
+      #root{
+        display: none;
+      }
+      #prompt{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #prompt>p{
+        font-weight: bold;
+        font-size: 25px;
+        color: #4a4a4a;
+      }
+    }
+  </style>
+  <title>易填表</title>
+</head>
+<body>
+<div id="root"></div>
+<article id="prompt">
+  <img src="robot.svg" alt="">
+  <p>请竖屏查看哦!</p>
+</article>
+</body>
+</html>

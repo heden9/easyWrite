@@ -1,5 +1,4 @@
 import { getFileInfo } from '../services/fetchUserInfo';
-import { ListView } from 'antd-mobile';
 
 export default {
   namespace: 'file',
