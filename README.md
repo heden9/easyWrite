@@ -6,6 +6,7 @@
 
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+
 演示地址 <http://mgq.jblog.info>
 
 
@@ -16,7 +17,7 @@
 ### Feature
 -  1.采用[dva](https://github.com/dvajs/dva)作为项目脚手架
 -  2.pc端采用react-router4的动态路由，实现多页面拆分打包，加快首屏加载时间。
--  3。配置了babel-plugin-import，实现antd资源的按需打包
+-  3.配置了babel-plugin-import，实现antd资源的按需打包
 -  4.使用[roadhog](https://github.com/sorrycc/roadhog)本地调试和构建，其中Mock功能实现脱离后端独立开发。
 -  5.编写request模块统一管理ajax，使用async/await
 -  6.对redux的store进行本地存储，在刷新时自动存入localstorage中。
