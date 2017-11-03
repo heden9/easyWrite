@@ -25,7 +25,7 @@ const App = ({ children, hidden, selectedTab, dispatch, message }) => {
     >
       <TabBar.Item
         icon={<Icon type={iconArr.message[1]} />}
-        selectedIcon={<Icon type={iconArr.message[1]} />}
+        selectedIcon={<Icon type={iconArr.message[0]} />}
         title="消息"
         key="/home"
         dot={message}

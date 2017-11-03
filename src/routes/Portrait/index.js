@@ -7,7 +7,7 @@ function Portrait({ headimgurl = img, num }) {
   return (
     <div className="portrait-container">
       <div className="portrait">
-        <img src={headimgurl} alt="" />
+        <img src={img} alt="" />
       </div>
       {
         num && <div className="title">id:{num}</div>
